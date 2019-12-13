@@ -43,12 +43,13 @@ const GetCoinsForm = ({ onSend }) => {
 
   return (
     <div>
-        <InputGroup className="mb-3">
-          <FormControl
+        <InputGroup className="mb-3 form-font">
+          $<FormControl
             type="text"
             data-testid="coinText"
             value={inputText}
             onChange={handleTextChange}
+            placeholder="Input dollar amout to see coin conversion"
           />
           <InputGroup.Append>
             <Button 
