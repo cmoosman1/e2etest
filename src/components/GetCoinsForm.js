@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 const GetCoinsForm = ({ onSend }) => {
+    /**
+     * setup hooks 
+     */
     const [inputText, setInputText] = useState('');
     const [textAreaDisplay, setDisplayText] = useState('');
 
+    /**
+     * 
+     * @param {*} event
+     * handle change event to update setInputText() 
+     */
     const handleTextChange = event => {
         setInputText(event.target.value);
     };
 
+    /**
+     * strips decimal out of input value
+     * handleSend passes props up to App
+     * clears text inpue 
+     * call generateCoinChange(rawValue)
+     */
     const handleSend = () => {
         const rawValue =(inputText + '').replace('.', '');
         onSend(inputText);
@@ -15,6 +29,9 @@ const GetCoinsForm = ({ onSend }) => {
         generateCoinChange(rawValue);
     }
 
+    /**
+     * coin register
+     */
     const knownCoins = [
       { name: 'Silver Dollar', value: 100 },
       { name: 'Half Dollar', value: 50 },
@@ -23,8 +40,17 @@ const GetCoinsForm = ({ onSend }) => {
       { name: 'Penny', value: 1 },
     ];
 
+    /**
+     * cionCount obj
+     */
     const coinCount = { };
     
+    /**
+     * 
+     * @param {*} remainingChange 
+     * Looping through the remainingChange and subtracting down to 
+     * get number of 
+     */
     function generateCoinChange(remainingChange) {
       let indexOfCoin = 0;
       while (remainingChange > 0 && indexOfCoin < knownCoins.length) {
@@ -35,6 +61,10 @@ const GetCoinsForm = ({ onSend }) => {
         indexOfCoin++;
       }
     
+      /**
+       * parse obj for display in view and call setDisplayText 
+       * to update state
+       */
       const text = Object.getOwnPropertyNames(coinCount)
         .map(coinName => coinName + ': ' + coinCount[coinName])
         .join(`, `);

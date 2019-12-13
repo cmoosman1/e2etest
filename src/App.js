@@ -5,15 +5,31 @@ import GetCoinsForm from './components/GetCoinsForm';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+/**
+ * url = current endpoint
+ */
 export const url = 'https://jsonplaceholder.typicode.com/users';
 
 const App = () => {
+  /**
+   * setup hooks 
+   */
   const [messages, setMessages] = useState([]);
   const [person, setPeople] = useState([]);
+  
+  /**
+   * 
+   * @param {*} newMessage 
+   * setMessages(newMessage) updates state from child compnent
+   */
   const handleSend = newMessage => {
     setMessages(newMessage);
   };
 
+  /**
+   * axios to GET users from mock api
+   * url = current endpoint
+   */
   axios.get(url)
     .then(res => {
       const persons = res.data;
