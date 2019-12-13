@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> render application renders 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-md-8 col-12"
+      >
+        <h4>
+          Coin calculation:
+        </h4>
+        <div>
+          <div
+            class="mb-3 form-font input-group"
+          >
+            <div
+              class="input-group-prepend"
+            >
+              <span
+                class="input-group-text"
+                id="inputGroupPrepend"
+              >
+                $
+              </span>
+            </div>
+            <input
+              class="form-control"
+              data-testid="coinText"
+              placeholder="Input dollar amout to see coin conversion"
+              type="text"
+              value=""
+            />
+            <div
+              class="input-group-append"
+            >
+              <button
+                class="btn btn-outline-secondary"
+                data-testid="sendButton"
+                type="button"
+              >
+                Convert
+              </button>
+            </div>
+          </div>
+          <div />
+        </div>
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="col"
+      >
+        <h4>
+          Current users:
+        </h4>
+        <div
+          class="container"
+        >
+          <div
+            class="row"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

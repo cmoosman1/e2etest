@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
-const GetCoinsForm = ({ onSend }) => {
+const GetCoinsForm = ({ data, onSend }) => {
     /**
      * setup hooks 
      */
@@ -74,7 +74,10 @@ const GetCoinsForm = ({ onSend }) => {
   return (
     <div>
         <InputGroup className="mb-3 form-font">
-          $<FormControl
+        <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroupPrepend">$</InputGroup.Text>
+            </InputGroup.Prepend>
+          <FormControl
             type="text"
             data-testid="coinText"
             value={inputText}
@@ -86,11 +89,14 @@ const GetCoinsForm = ({ onSend }) => {
             variant="outline-secondary" 
             data-testid="sendButton"
             onClick={handleSend}>
-              Button
+              Convert
             </Button>
           </InputGroup.Append>
-        </InputGroup>
+        </InputGroup>    
         <div>
+          {data.length > 0 &&
+            <h5>You submitted: ${data}</h5>
+          }
           {textAreaDisplay}
         </div>
     </div>

@@ -5,15 +5,15 @@ import {
 } from '@testing-library/react';
 import UserList from '../components/UserList';
 
-describe('<UserList />', () => {
-  let getByTestId;
-  let list;
-  let users = 'john doe'; 
-  afterEach(cleanup);
+afterEach(cleanup);
 
+describe('<UserList />', () => {
+  let list;
   describe('render list', () => {
     beforeEach(() => {
-        users = ['joe', 'jane'];
+      let getByTestId;
+      let users = 'john doe';
+      users = ['joe', 'jane'];
         ({ getByTestId } = render(<UserList data={users} />));
 
         list = getByTestId('userList');

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  act,
   render,
   fireEvent,
   cleanup,
@@ -17,24 +18,32 @@ describe('<GetCoinsForm />', () => {
         sendHandler = jest.fn();
         ({ getByTestId } = render(<GetCoinsForm onSend={sendHandler} />));
 
-      fireEvent.change(
-        getByTestId('coinText'),
-        {
-          target: {
-            value: 'You submitted $2.85',
+        act(() => {fireEvent.change(
+          getByTestId('coinText'),
+          {
+            target: {
+              value: 'You submitted $2.85',
+            },
           },
-        },
-      );
+        )
+      });
 
       fireEvent.click(getByTestId('sendButton'));
     });
 
-    it('clears the text field', () => {
-      expect(getByTestId('coinText').value).toEqual('');
-    });
-
     it('calls the send handler', () => {
       expect(sendHandler).toHaveBeenCalledWith('You submitted $2.85');
+    });
+  });
+
+  describe('handle text field', ()=> {
+    it('clears the text field', () => {
+      const data = {
+        length: 0
+      };
+      ({ getByTestId } = render(<GetCoinsForm onSend={sendHandler} props={data} />));
+      fireEvent.click(getByTestId('sendButton'));
+      expect(getByTestId('coinText').value).toEqual('');
     });
   });
 });
